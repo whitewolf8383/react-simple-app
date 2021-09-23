@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class Counter extends React.Component {
-  state = {
-    value: this.props.value
-  };
-
   styles = {
     button: {
       fontWeight: 30,
@@ -14,34 +10,37 @@ class Counter extends React.Component {
       width: 50
     }
   }
-
-  handleIncrement = () => {
-    this.setState({ value: this.state.value + 1 });
-  }
-
-  handleDecrement = () => {
-    this.state.value === 0 ? 
-    this.setState({ value: this.state.value = 0 }) : 
-    this.setState({ value: this.state.value - 1 }); 
-  }
   
   render() { 
     return (
-      <React.Fragment>
+      <div>
         <span className={this.getBadgeClasses()}>{ this.getCount() }</span>
-        <button style={ this.styles.button } onClick={ this.handleIncrement }>+</button>
-        <button style={ this.styles.button } onClick={ this.handleDecrement }>-</button>
-      </React.Fragment>
+        <button 
+          style={ this.styles.button } 
+          onClick={ () => { this.props.onIncrement(this.props.counter) }}
+        >+</button>
+
+        <button 
+          style={ this.styles.button } 
+          onClick={ () => { this.props.inDecrement(this.props.counter) } }
+        >-</button>
+
+        <button onClick={ () => 
+          this.props.onDelete(this.props.counter.id) } 
+          className='btn btn-danger btn-sm m-2'
+        >Delete</button>
+      </div>
     );
   }
 
   getCount() {
-    return (this.state.value === 0 ? 'Zero' : this.state.value);
+    const { value } = this.props.counter;
+    return (value === 0 ? 'Zero' : value);
   }
 
   getBadgeClasses() {
     let spanClasses = 'badge m-2 badge-';
-    spanClasses += this.state.value === 0 ? 'warning' : 'primary';
+    spanClasses += this.props.counter.value === 0 ? 'warning' : 'primary';
     return spanClasses;
   }
 }
