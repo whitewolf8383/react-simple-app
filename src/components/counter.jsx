@@ -22,7 +22,7 @@ class Counter extends React.Component {
 
         <button 
           style={ this.styles.button } 
-          onClick={ () => { this.props.inDecrement(this.props.counter) } }
+          onClick={ () => { this.props.onDecrement(this.props.counter) } }
         >-</button>
 
         <button onClick={ () => 
