@@ -2,27 +2,27 @@ import React from 'react';
 
 class Counter extends React.Component {
   state = {
-    count: 0
+    value: this.props.value
   };
 
   formatCount() {
-    const count = this.state.count;
+    const count = this.state.value;
     return count === 0 ? <h6>Zero</h6> : <h6>{ count }</h6>;
   }
 
   getClasses() {
     let classes = "badge m-2 badge-";
-    classes += (this.state.count === 0) ? "warning" : "primary";
+    classes += (this.state.value === 0) ? "warning" : "primary";
     return classes;
   }
 
   handleIncrement = () => {
-    this.setState({ count: this.state.count + 1 });
+    this.setState({ value: this.state.value + 1 });
   }
 
   handleDecrement = () => {
-    const count = this.state.count;
-    this.setState({ count: count === 0 ? count : count - 1 });
+    const value = this.state.value;
+    this.setState({ value: value === 0 ? value : value - 1 });
   }
 
 

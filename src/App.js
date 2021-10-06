@@ -1,13 +1,13 @@
 import React from 'react';
 
 // Components
-import Counter from './components/counter';
+import Counters from './components/counters';
 
 class App extends React.Component {
   render() { 
     return (
       <React.Fragment>
-        <Counter />
+        <Counters />
       </React.Fragment>
     );
   }
