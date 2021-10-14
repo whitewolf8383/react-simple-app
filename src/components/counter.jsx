@@ -25,7 +25,6 @@ class Counter extends React.Component {
     this.setState({ value: value === 0 ? value : value - 1 });
   }
 
-
   render() { 
     const buttonClasses = "btn btn-secondary btn-sm m-2";
 
@@ -34,6 +33,7 @@ class Counter extends React.Component {
         <span className={ this.getClasses() }>{ this.formatCount() }</span>
         <button onClick={ this.handleIncrement } className={ buttonClasses }>Increment</button>
         <button onClick={ this.handleDecrement } className={ buttonClasses }>Decrement</button>
+        <button onClick={ () => this.props.onDelete(this.props.id) } className="btn btn-danger btn-sm">Delete</button>
       </div>
     );
   }
